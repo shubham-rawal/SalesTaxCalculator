@@ -1,6 +1,6 @@
 import 'package:money_converter/Currency.dart';
 import 'package:money_converter/money_converter.dart';
-import 'package:sales_tax_app/constants.dart';
+import 'package:sales_tax_app/core/constants.dart';
 
 const List<String> currencies = currenciesList;
 

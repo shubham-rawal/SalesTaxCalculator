@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sales_tax_app/tableItem.dart';
+import 'package:sales_tax_app/data/models/tableItem.dart';
 
 final List<int> qtyValues = [];
 final List<String> itemDescValues = [];

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sales_tax_app/calculator_page.dart';
-import 'package:sales_tax_app/constants.dart';
-import 'package:sales_tax_app/receipt_page.dart';
+import './presentation/views/calculator_page.dart';
+import 'package:sales_tax_app/core/constants.dart';
+import 'package:sales_tax_app/presentation/views/receipt_page.dart';
 
 void main() {
   runApp(const MyApp());

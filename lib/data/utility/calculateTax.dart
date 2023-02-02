@@ -1,4 +1,4 @@
-import 'package:sales_tax_app/tableItem.dart';
+import '../models/tableItem.dart';
 
 double calculateTax(List<TableItem> itemsList) {
   double tax = 0.0;

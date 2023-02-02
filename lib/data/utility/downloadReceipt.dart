@@ -30,10 +30,10 @@ import 'package:file_saver/file_saver.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:sales_tax_app/tableItem.dart';
+import 'package:sales_tax_app/data/models/tableItem.dart';
 import 'package:open_filex/open_filex.dart';
 
-void downloadFile(var dataTable) async {
+void downloadFile(DataTable dataTable) async {
   if (!kIsWeb) {
     if (Platform.isIOS || Platform.isAndroid || Platform.isMacOS) {
       bool status = await Permission.storage.isGranted;
@@ -42,10 +42,23 @@ void downloadFile(var dataTable) async {
     }
   }
 
-  String text = dataTable.toString();
+  String text = "";
+
+  final Map<int, dynamic> map;
+
+  List<String> tableRows = [];
+
+  for (var i = 0; i < dataTable.rows.length; i++) {
+    for (var j = 0; j < dataTable.rows[i].cells.length; j++) {
+      tableRows.add(dataTable.rows[i].cells[j].child.key.toString());
+    }
+  }
+
+  text = tableRows.toString();
+
   final bytes = utf8.encode(text);
   final uint8bytes = Uint8List.fromList(bytes);
-  MimeType type = MimeType.MICROSOFTWORD;
+  MimeType type = MimeType.TEXT;
   String path = await FileSaver.instance
       .saveFile("receipt", uint8bytes, "txt", mimeType: type);
   print(path);

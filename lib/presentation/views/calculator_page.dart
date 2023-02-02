@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:money_converter/Currency.dart';
-import 'package:sales_tax_app/constants.dart';
-import 'package:sales_tax_app/tableItem.dart';
-import 'package:sales_tax_app/tableRowWidget.dart';
+import 'package:sales_tax_app/core/constants.dart';
+import 'package:sales_tax_app/data/models/tableItem.dart';
+import '../widgets/tableRowWidget.dart';
 
 var count = 0;
 final List<TableItem> itemsList = [];

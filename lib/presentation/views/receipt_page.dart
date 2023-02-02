@@ -5,11 +5,11 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:money_converter/Currency.dart';
 import 'package:money_converter/money_converter.dart';
-import 'package:sales_tax_app/calculateTax.dart';
-import 'package:sales_tax_app/calculator_page.dart';
-import 'package:sales_tax_app/constants.dart';
-import 'package:sales_tax_app/downloadReceipt.dart';
-import 'package:sales_tax_app/tableRowWidget.dart';
+import 'package:sales_tax_app/data/utility/calculateTax.dart';
+import 'package:sales_tax_app/presentation/views/calculator_page.dart';
+import 'package:sales_tax_app/core/constants.dart';
+import 'package:sales_tax_app/data/utility/downloadReceipt.dart';
+import '../widgets/tableRowWidget.dart';
 import 'package:screenshot/screenshot.dart';
 
 const List<String> currencies = currenciesList;
