@@ -21,23 +21,32 @@
 // // cleanup
 // html.document.body.children.remove(anchor);
 // html.Url.revokeObjectUrl(url);
+import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart' as pw;
 
-Future getPdf(Uint8List screenShot) async {
-  pw.Document pdf = pw.Document();
-  pdf.addPage(
-    pw.Page(
-      pageFormat: PdfPageFormat.a4,
-      build: (context) {
-        return pw.Expanded(
-          child: pw.Image(PdfImage.file(pdf.document, bytes: screenShot) as pw.ImageProvider, fit: pw.BoxFit.contain)
-        );
-      },
-    ),
-  );
-  File pdfFile = File('receipt.pdf');
-  pdfFile.writeAsBytesSync(pdf.save() as List<int>);
+import 'package:file_saver/file_saver.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:sales_tax_app/tableItem.dart';
+import 'package:open_filex/open_filex.dart';
+
+void downloadFile(var dataTable) async {
+  if (!kIsWeb) {
+    if (Platform.isIOS || Platform.isAndroid || Platform.isMacOS) {
+      bool status = await Permission.storage.isGranted;
+
+      if (!status) await Permission.storage.request();
+    }
+  }
+
+  String text = dataTable.toString();
+  final bytes = utf8.encode(text);
+  final uint8bytes = Uint8List.fromList(bytes);
+  MimeType type = MimeType.MICROSOFTWORD;
+  String path = await FileSaver.instance
+      .saveFile("receipt", uint8bytes, "txt", mimeType: type);
+  print(path);
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:money_converter/Currency.dart';
 import 'package:sales_tax_app/constants.dart';
 import 'package:sales_tax_app/tableItem.dart';
 import 'package:sales_tax_app/tableRowWidget.dart';
